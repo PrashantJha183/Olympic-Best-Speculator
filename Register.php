@@ -5,12 +5,22 @@ if (isset($_POST['submit'])) {
     $name = $_POST['Name'];
     $uname = $_POST['Uname'];
     $email = $_POST['email'];
-    $password = $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $query = "INSERT INTO `user`(`Name`, `Username`, `Email`, `Password`) VALUES ('$name','$uname','$email','$password')";
-    $result = mysqli_query($conn, $query);
-    echo"<script>alert('You have been registered successfully')</script>";
-    header('Location: Login.php');
-    exit();
+    // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = $_POST['password'];
+
+    $check = "SELECT `Username` FROM `user` WHERE `Username` = '$uname'";
+    $execute = mysqli_query($conn, $check);
+    $count = mysqli_num_rows($execute);
+    if ($count > 0) {
+
+        echo "<script>alert('Username already exist!')</script>";
+    } else {
+        $query = "INSERT INTO `user`(`Name`, `Username`, `Email`, `Password`) VALUES ('$name','$uname','$email','$password')";
+        $result = mysqli_query($conn, $query);
+        echo "<script>alert('You have been registered successfully')</script>";
+        header('Location: Login.php');
+        exit();
+    }
 
 
 }
@@ -63,7 +73,7 @@ if (isset($_POST['submit'])) {
                     <input type="password" class="form-control" id="exampleInputPassword1"
                         placeholder="Enter your password" required max="8" autocomplete="off" name="password">
                 </div>
-                <a href="#">Don't have an account?<br />Register here</a>
+                <!-- <a href="#">Don't have an account?<br />Register here</a> -->
                 <input type="submit" class="btn btn-success my-3" style="display:block; margin:auto" name="submit">
             </form>
         </div>

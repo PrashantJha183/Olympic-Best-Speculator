@@ -37,7 +37,7 @@
                                 class="bi bi-house">&nbsp;Home</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><i
+                        <a class="nav-link active" aria-current="page" href="Leaderboard.php"><i
                                 class="bi bi-trophy">&nbsp;Leaderboard</i></a>
                     </li>
                     <li class="nav-item">

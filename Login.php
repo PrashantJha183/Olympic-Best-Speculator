@@ -9,14 +9,13 @@ if ($_SESSION['ulogin'] !== '') {
 }
 
 if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
+    $uname = $_POST['uname'];
     $password = $_POST['password'];
-
-    $query = "SELECT * FROM `user` WHERE `Email` = '$email' AND `Password` = '$password'";
+    $query = "SELECT * FROM `user` WHERE `Username` = '$uname' AND `Password` = '$password'";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
-        $_SESSION['ulogin'] = $email;
+        $_SESSION['ulogin'] = $_POST['uname'];
 
         // Redirect to another page after successful login
         header('Location: HeaderForUser.php');
@@ -53,15 +52,15 @@ if (isset($_POST['submit'])) {
             <form method="post">
                 <div class="form-group my-3">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter email" name="email" autocomplete="off" required max="20">
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter email" name="uname" autocomplete="off" required max="20">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
                         name="password" autocomplete="off" required max="20">
                 </div>
-                <a href="#">Don't have an account?<br />Register here</a>
+                <a href="Register.php">Don't have an account?<br />Register here</a>
                 <input type="submit" class="btn btn-success my-3" style="display:block; margin:auto" name="submit"
                     value="Login">
             </form>

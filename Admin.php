@@ -3,83 +3,45 @@ session_start();
 include("Config.php");
 include('HeaderForUser.php');
 $save = $_SESSION['ulogin'];
-$score = 0;
-$insertSuccess = false;
-
-$checkQuery = "SELECT `QueId` FROM `contestant` WHERE `Username` = '$save'";
-$checkResult = mysqli_query($conn, $checkQuery);
-$submittedCount = mysqli_num_rows($checkResult);
-
-if ($submittedCount > 0) {
-    echo "<script>alert('You have already submitted the quiz. Best of luck for the result!!')</script>";
-    // Redirect or perform any other action as needed
-    // header('Location: HeaderForUser.php');
-    exit();
-}
-if (isset($_POST['submit'])) {
 
 
+if ($save == 'admin') {
 
-    foreach ($_POST as $key => $value) {
-        if (strpos($key, 'selectedopt') !== false) {
-            // Extract question ID from the input name
-            $questionId = str_replace('selectedopt', '', $key);
-            // echo "Question no: " . $questionId;
+    if (isset($_POST['submit'])) {
+        foreach ($_POST as $key => $value) {
+            if (strpos($key, 'selectedopt') !== false) {
+                // Extract question ID from the input name
+                $questionId = str_replace('selectedopt', '', $key);
+                // echo "Question no: " . $questionId;
 
-            // Get the selected option for the current question
-            $selectedOption = mysqli_real_escape_string($conn, $value);
-            // echo "Answer: " . $selectedOption;
+                // Get the selected option for the current question
+                $selectedOption = mysqli_real_escape_string($conn, $value);
+                // echo "Answer: " . $selectedOption;
 
-            // Insert the selected option into the database
-            $query = "INSERT INTO `contestant`(`Username`, `QueId`, `Selectedopt`) VALUES ('$save', '$questionId', '$selectedOption')";
-            $result = mysqli_query($conn, $query);
-            // exit();
+                // Insert the selected option into the database
+                $query = "INSERT INTO `answer`(`QueId`, `Selectedopt`) VALUES ('$questionId', '$selectedOption')";
+                $result = mysqli_query($conn, $query);
 
-            if ($result) {
-                $insertSuccess = true;
+                
+
             }
 
 
-            $correctOptionQuery = "SELECT `Selectedopt` FROM `answer` WHERE `QueId` = '$questionId'";
-            $correctOptionResult = mysqli_query($conn, $correctOptionQuery);
-
-            if ($correctOptionResult && mysqli_num_rows($correctOptionResult) > 0) {
-                $row = mysqli_fetch_assoc($correctOptionResult);
-                $correctOption = $row['Selectedopt'];
-
-                // Compare the selected option to the correct option
-                if ($selectedOption == $correctOption) {
-                    // Award 10 points for each correct answer
-                    $score += 10;
-
-                }
-            } else {
-                echo "<script>alert('Error fetching correct option for Question ID $questionId.');</script>";
-            }
 
         }
 
+
+        if ($result) {
+            echo "<script>alert('Answer submitted by the admin')</script>";
+
+        }
     }
-
-
-
-    if ($insertSuccess) {
-        echo "<script>alert('You had attempted the quiz. Best of the luck for the result!!');</script>";
-    } else {
-        echo "<script>alert('You had not attempted the quiz');</script>";
-    }
-
-    // echo "<script>alert('Your score: $score');</script>";
-
-
-
-    if ($save != 'admin') {
-        $updatePointsQuery = "INSERT INTO `leaderboard` (`Username`, `Points`) VALUES ('$save', $score) ON DUPLICATE KEY UPDATE `Points` = `Points` + $score";
-        $updatePointsResult = mysqli_query($conn, $updatePointsQuery);
-    }
-
 
 }
+
+
+
+
 ?>
 
 <!DOCTYPE html>
