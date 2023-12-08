@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 
-    <script src="path/to/jquery.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha384-n50KdWos5V9PtuRRqM+8EluxXqUZlKTBJNLrA2w9bLzhzfe+5CZo8m+2FfXCVBVO"
         crossorigin="anonymous"></script>
@@ -75,10 +73,16 @@
 </head>
 
 <body class="light-mode">
+
+
+
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <hr />
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="index.php">OlympicsQuiz</a>
+            <a class="navbar-brand" href="../index.php">OlympicsQuiz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -90,19 +94,24 @@
                                 class="bi bi-trophy">&nbsp;Leaderboard</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="TeamForNoLogin.php"><i
+                        <a class="nav-link active" aria-current="page" href="Team.php"><i
                                 class="bi bi-people">&nbsp;Teams</i></a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Admin/AdminLogin.php"><i
+                        <a class="nav-link active" aria-current="page" href="AdminLogin.php"><i
                                 class="bi bi-person-square">&nbsp;Admin</i></a>
                     </li>
 
 
 
 
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" onclick="colour()" id="mode">
+                            <i class="bi bi-moon" id="modeIcon"></i> 
 
+                        </a>
+                    </li> -->
 
 
                 </ul>
@@ -112,6 +121,5 @@
 
 
 </body>
-
 
 </html>

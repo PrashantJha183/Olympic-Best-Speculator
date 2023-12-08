@@ -1,32 +1,29 @@
 <?php
-include("Header.php");
+session_start();
 include('Config.php');
+include('Header.php');
 if (isset($_POST['submit'])) {
-    $name = $_POST['Name'];
-    $uname = $_POST['Uname'];
-    $password = $_POST['password'];
-
-    $check = "SELECT `Username` FROM `user` WHERE `Username` = '$uname'";
-    $execute = mysqli_query($conn, $check);
-    $count = mysqli_num_rows($execute);
-    if ($count > 0) {
-
-        echo "<script>alert('Username already exist!')</script>";
-    } else {
-        $query = "INSERT INTO `user`(`Name`, `Username`,`Password`) VALUES ('$name','$uname','$password')";
-        $result = mysqli_query($conn, $query);
-     
-        echo "<script>alert('You have been registered successfully')</script>";
-        // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/index.php'</script>";
-        echo "<script>document.location = 'index.php'</script>";
+    $adminUname = $_POST['uname'];
+    $adminPassword = $_POST['password'];
+    $query = "SELECT * FROM `admin` WHERE `Username` =  '$adminUname' AND `Password` = '$adminPassword'";
+    $result = mysqli_query($conn, $query);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $_SESSION['ulogin'] = $adminUname;
+        // Redirect to another page after successful login
+        // header('Location:https://OlympicsQuiz.000webhostapp.com/HeaderForUser.php');
+        // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/HeaderForUser.php'</script>";
+        // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/HomepageForAdmin.php'</script>";
+        echo "<script>document.location = 'HomepageForAdmin.php'</script>";
         exit();
+    } else {
+        echo "<script>alert('Invalid login credentials for admin')</script>";
     }
-
-
 }
 
 
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,23 +35,16 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
-    <div class="container my-5">
+    <div class="container my-5 py-5">
         <div class="border border-dark p-5">
-            <h1 class="text-center"><i class="bi bi-person-circle">&nbsp;Register</i></h1>
+            <h1 class="text-center"><i class="bi bi-person-bounding-box">&nbsp;&nbsp;Admin Login</i></h1>
             <form method="post">
                 <div class="form-group my-3">
-                    <label for="Name">Name</label>
-                    <input type="text" class="form-control" id="Name" aria-describedby="emailHelp"
-                        placeholder="Enter your name" required max="30" autocomplete="off" name="Name">
-
+                    <label for="uname">Username</label>
+                    <input type="text" class="form-control" id="uname" aria-describedby="emailHelp"
+                        placeholder="Enter username" name="uname" autocomplete="off" required max="20">
                 </div>
-                <div class="form-group my-3">
-                    <label for="Uname">Username</label>
-                    <input type="text" class="form-control" id="Uname" aria-describedby="emailHelp"
-                        placeholder="Enter your username" required max="30" autocomplete="off" name="Uname">
 
-                </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-group">
@@ -68,10 +58,17 @@ if (isset($_POST['submit'])) {
                         </div>
                     </div>
                 </div>
-                <input type="submit" class="btn btn-success my-4" style="display:block; margin:auto" name="submit">
+
+
+
+
+
+                <input type="submit" class="btn btn-success my-4" style="display:block; margin:auto" name="submit"
+                    value="Login">
             </form>
         </div>
     </div>
+
     <script>
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');

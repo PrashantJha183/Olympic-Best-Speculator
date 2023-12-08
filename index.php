@@ -1,30 +1,30 @@
 <?php
+session_start();
 include("Header.php");
+
+error_reporting(0);
 include('Config.php');
+
 if (isset($_POST['submit'])) {
-    $name = $_POST['Name'];
-    $uname = $_POST['Uname'];
+    $uname = $_POST['uname'];
     $password = $_POST['password'];
+    $query = "SELECT * FROM `user` WHERE `Username` = '$uname' AND `Password` = '$password'";
+    $result = mysqli_query($conn, $query);
 
-    $check = "SELECT `Username` FROM `user` WHERE `Username` = '$uname'";
-    $execute = mysqli_query($conn, $check);
-    $count = mysqli_num_rows($execute);
-    if ($count > 0) {
-
-        echo "<script>alert('Username already exist!')</script>";
-    } else {
-        $query = "INSERT INTO `user`(`Name`, `Username`,`Password`) VALUES ('$name','$uname','$password')";
-        $result = mysqli_query($conn, $query);
-     
-        echo "<script>alert('You have been registered successfully')</script>";
-        // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/index.php'</script>";
-        echo "<script>document.location = 'index.php'</script>";
+    if ($result && mysqli_num_rows($result) > 0) {
+        $_SESSION['ulogin'] = $uname;
+        // Redirect to another page after successful login
+        echo "<script>document.location = 'Home.php'</script>";
+        // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/Home.php'</script>";
         exit();
+    } else {
+        echo "<script>alert('Invalid login credentials')</script>";
+
     }
 
 
-}
 
+}
 
 ?>
 
@@ -38,23 +38,16 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
-    <div class="container my-5">
+    <div class="container my-5 py-5">
         <div class="border border-dark p-5">
-            <h1 class="text-center"><i class="bi bi-person-circle">&nbsp;Register</i></h1>
+            <h1 class="text-center"><i class="bi bi-box-arrow-in-left">&nbsp;Login</i></h1>
             <form method="post">
                 <div class="form-group my-3">
-                    <label for="Name">Name</label>
-                    <input type="text" class="form-control" id="Name" aria-describedby="emailHelp"
-                        placeholder="Enter your name" required max="30" autocomplete="off" name="Name">
-
+                    <label for="uname">Username</label>
+                    <input type="text" class="form-control" id="uname" aria-describedby="emailHelp"
+                        placeholder="Enter username" name="uname" autocomplete="off" required max="20">
                 </div>
-                <div class="form-group my-3">
-                    <label for="Uname">Username</label>
-                    <input type="text" class="form-control" id="Uname" aria-describedby="emailHelp"
-                        placeholder="Enter your username" required max="30" autocomplete="off" name="Uname">
 
-                </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-group">
@@ -68,10 +61,20 @@ if (isset($_POST['submit'])) {
                         </div>
                     </div>
                 </div>
-                <input type="submit" class="btn btn-success my-4" style="display:block; margin:auto" name="submit">
+
+
+                <a href="Forgotpassword.php" style="text-decoration: none; float:right;">Forgot password</a>
+
+                <h5 class="text-center mt-5"><a href="Register.php" style="text-decoration: none;">Don't
+                        have an account ?</a></h5>
+
+
+                <input type="submit" class="btn btn-success" style="display:block; margin:auto" name="submit"
+                    value="Login">
             </form>
         </div>
     </div>
+
     <script>
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
