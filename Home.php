@@ -4,6 +4,7 @@ include('Config.php');
 
 include('HeaderForUser.php');
 $save = $_SESSION['ulogin'];
+// echo $save;
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
     }
     if (!$insertSuccess) {
         echo "<script>alert('Something went wrong while updating questions and options');</script>";
-        echo "<script>document.location = 'HomepageForAdmin';</script>";
+        echo "<script>document.location = 'HomepageForAdmin.php';</script>";
     }
 }
 // else {

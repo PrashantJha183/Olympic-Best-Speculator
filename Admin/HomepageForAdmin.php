@@ -37,6 +37,18 @@ if ($queryResult) {
 </head>
 
 <body>
+    <?php
+    // $selectLeaderboardQuery = "SELECT `Username` FROM `leaderboard`;";
+    // $selectLeaderboardResult = mysqli_query($conn, $selectLeaderboardQuery);
+
+    // if ($selectLeaderboardResult) {
+    //     while ($row = mysqli_fetch_assoc($selectLeaderboardResult)) {
+    //         $username = $row['Username'];
+    //         echo "<script>alert('Username: $username');</script>";
+    //     }
+    // }
+
+    ?>
     <div class="container my-5 text-center">
         <div class="row my-4">
             <div class="col-md-auto col-sm-6 d-flex justify-content-center align-items-center mx-auto my-3">

@@ -5,6 +5,9 @@ if (isset($_POST['submit'])) {
     $name = $_POST['Name'];
     $uname = $_POST['Uname'];
     $password = $_POST['password'];
+    $security = $_POST['security'];
+    $hashedPassword = md5($password);
+
 
     $check = "SELECT `Username` FROM `user` WHERE `Username` = '$uname'";
     $execute = mysqli_query($conn, $check);
@@ -13,9 +16,9 @@ if (isset($_POST['submit'])) {
 
         echo "<script>alert('Username already exist!')</script>";
     } else {
-        $query = "INSERT INTO `user`(`Name`, `Username`,`Password`) VALUES ('$name','$uname','$password')";
+        $query = "INSERT INTO `user`(`Name`, `Username`,`Password`,`Security`) VALUES ('$name','$uname','$hashedPassword', '$security')";
         $result = mysqli_query($conn, $query);
-     
+
         echo "<script>alert('You have been registered successfully')</script>";
         // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/index.php'</script>";
         echo "<script>document.location = 'index.php'</script>";
@@ -68,7 +71,23 @@ if (isset($_POST['submit'])) {
                         </div>
                     </div>
                 </div>
-                <input type="submit" class="btn btn-success my-4" style="display:block; margin:auto" name="submit">
+
+                <div class="form-group my-3">
+                    <label for="password">Security Key</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="security" placeholder="security"
+                            aria-describedby="passwordToggle" name="security" autocomplete="off" required max="20">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="securityToggle"
+                                onclick="toggleSecurityVisibility()">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="submit" class="btn btn-success my-4" style="display:block; margin:auto" name="submit"
+                    value="Submit">
             </form>
         </div>
     </div>
@@ -76,6 +95,20 @@ if (isset($_POST['submit'])) {
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
             const passwordToggle = document.getElementById('passwordToggle');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordToggle.innerHTML = '<i class="bi bi-eye-slash"></i>'; // Change icon to hide
+            } else {
+                passwordInput.type = 'password';
+                passwordToggle.innerHTML = '<i class="bi bi-eye"></i>'; // Change icon to show
+            }
+        }
+
+
+        function toggleSecurityVisibility() {
+            const passwordInput = document.getElementById('security');
+            const passwordToggle = document.getElementById('securityToggle');
 
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';

@@ -9,9 +9,11 @@ include('Config.php');
 if (isset($_POST['submit'])) {
     $uname = $_POST['uname'];
     $newPassword = $_POST['password'];
+    $security = $_POST['security'];
+
 
     // Check if the entered username is correct
-    $checkQuery = "SELECT * FROM `user` WHERE `Username` = '$uname'";
+    $checkQuery = "SELECT * FROM `user` WHERE `Username` = '$uname' AND `Security` = '$security'";
     $checkResult = mysqli_query($conn, $checkQuery);
 
     if ($checkResult && mysqli_num_rows($checkResult) > 0) {
@@ -21,7 +23,7 @@ if (isset($_POST['submit'])) {
         // Check if the new password is different from the current password
         if ($newPassword !== $currentPassword) {
             // Update the password for the provided username
-            $updateQuery = "UPDATE `user` SET `Password` = '$newPassword' WHERE `Username` = '$uname'";
+            $updateQuery = "UPDATE `user` SET `Password` = '$newPassword' WHERE `Username` = '$uname' AND `Security` = '$security'";
             $updateResult = mysqli_query($conn, $updateQuery);
 
             if ($updateResult) {
@@ -36,7 +38,7 @@ if (isset($_POST['submit'])) {
             echo "<script>alert('Please enter a different password than the current one.')</script>";
         }
     } else {
-        echo "<script>alert('Invalid username.')</script>";
+        echo "<script>alert('Invalid username or security key.')</script>";
     }
 }
 
@@ -61,18 +63,69 @@ if (isset($_POST['submit'])) {
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                         placeholder="Enter username" name="uname" autocomplete="off" required max="20">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                        placeholder="Enter your new password" name="password" autocomplete="off" required max="20">
+                 <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password"
+                            aria-describedby="passwordToggle" name="password" autocomplete="off" required max="20">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="passwordToggle"
+                                onclick="togglePasswordVisibility()">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
+                
 
+                
+                <div class="form-group my-3">
+                    <label for="password">Security Key</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="security" placeholder="Security key"
+                            aria-describedby="passwordToggle" name="security" autocomplete="off" required max="20">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="securityToggle"
+                                onclick="toggleSecurityVisibility()">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <input type="submit" class="btn btn-success my-4" style="display:block; margin:auto" name="submit"
                     value="Submit">
             </form>
         </div>
     </div>
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const passwordToggle = document.getElementById('passwordToggle');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordToggle.innerHTML = '<i class="bi bi-eye-slash"></i>'; // Change icon to hide
+            } else {
+                passwordInput.type = 'password';
+                passwordToggle.innerHTML = '<i class="bi bi-eye"></i>'; // Change icon to show
+            }
+        }
+        
+        
+        function toggleSecurityVisibility() {
+            const passwordInput = document.getElementById('security');
+            const passwordToggle = document.getElementById('securityToggle');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordToggle.innerHTML = '<i class="bi bi-eye-slash"></i>'; // Change icon to hide
+            } else {
+                passwordInput.type = 'password';
+                passwordToggle.innerHTML = '<i class="bi bi-eye"></i>'; // Change icon to show
+            }
+        }
+    </script>
 </body>
 
 </html>

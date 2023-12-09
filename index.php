@@ -8,7 +8,8 @@ include('Config.php');
 if (isset($_POST['submit'])) {
     $uname = $_POST['uname'];
     $password = $_POST['password'];
-    $query = "SELECT * FROM `user` WHERE `Username` = '$uname' AND `Password` = '$password'";
+    $encrypt = md5($password);
+    $query = "SELECT * FROM `user` WHERE `Username` = '$uname' AND `Password` = '$encrypt'";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
