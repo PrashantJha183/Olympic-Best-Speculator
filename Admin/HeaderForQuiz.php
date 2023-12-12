@@ -37,14 +37,14 @@
             -moz-appearance: textfield;
         }
     </style>
-    <title>OlympicsQuiz</title>
+    <title>Olympic Best Spectaculor</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="HomepageForAdmin.php">OlympicsQuiz</a>
+            <a class="navbar-brand" href="HomepageForAdmin.php">Olympic Best Spectaculor</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -85,7 +85,7 @@
 
     function redirect() {
 
-        // document.location = 'https://OlympicsQuiz.000webhostapp.com/index.php';
+        // document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/index.php';
         document.location = '../index.php';
     }
 </script>

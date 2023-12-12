@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['ulogin'] = $uname;
         // Redirect to another page after successful login
         echo "<script>document.location = 'Home.php'</script>";
-        // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/Home.php'</script>";
+        // echo "<script>document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/Home.php'</script>";
         exit();
     } else {
         echo "<script>alert('Invalid login credentials')</script>";
@@ -35,24 +35,24 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OlympicsQuiz</title>
+    <title>Olympic Best Spectaculor</title>
 </head>
 
 <body>
     <div class="container my-5 py-5">
-        <div class="border border-dark p-5">
+        <div class="border border-dark border-1 rounded p-5">
             <h1 class="text-center"><i class="bi bi-box-arrow-in-left">&nbsp;Login</i></h1>
             <form method="post">
                 <div class="form-group my-3">
                     <label for="uname">Username</label>
                     <input type="text" class="form-control" id="uname" aria-describedby="emailHelp"
-                        placeholder="Enter username" name="uname" autocomplete="off" required max="20">
+                        placeholder="Enter your username" name="uname" autocomplete="off" required max="20">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="password" placeholder="Password"
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password"
                             aria-describedby="passwordToggle" name="password" autocomplete="off" required max="20">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button" id="passwordToggle"
@@ -64,14 +64,14 @@ if (isset($_POST['submit'])) {
                 </div>
 
 
-                <a href="Forgotpassword.php" style="text-decoration: none; float:right;">Forgot password</a>
+                <a href="Forgotpassword.php" style="text-decoration: none; float:right;" class="my-1">Forgot
+                    password</a>
 
-                <h5 class="text-center mt-5"><a href="Register.php" style="text-decoration: none;">Don't
-                        have an account ?</a></h5>
+                <input type="submit" class="btn btn-success my-5 py-2 w-100 rounded"
+                    style="display:block; margin:auto; font-size: 18px;" name="submit" value="Login" />
 
-
-                <input type="submit" class="btn btn-success" style="display:block; margin:auto" name="submit"
-                    value="Login">
+                <h5 class="text-center"><a href="Register.php" style="text-decoration: none; color:black; ">Don't
+                        have an account? Create an acccount</a></h5>
             </form>
         </div>
     </div>

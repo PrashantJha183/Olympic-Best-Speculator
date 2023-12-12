@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
         $result = mysqli_query($conn, $query);
 
         echo "<script>alert('You have been registered successfully')</script>";
-        // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/index.php'</script>";
+        // echo "<script>document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/index.php'</script>";
         echo "<script>document.location = 'index.php'</script>";
         exit();
     }
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OlympicsQuiz</title>
+    <title>Olympic Best Spectaculor</title>
 </head>
 
 <body>

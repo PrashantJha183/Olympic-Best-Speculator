@@ -10,9 +10,9 @@ if (isset($_POST['submit'])) {
     if ($result && mysqli_num_rows($result) > 0) {
         $_SESSION['ulogin'] = $adminUname;
         // Redirect to another page after successful login
-        // header('Location:https://OlympicsQuiz.000webhostapp.com/HeaderForUser.php');
-        // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/HeaderForUser.php'</script>";
-        // echo "<script>document.location = 'https://OlympicsQuiz.000webhostapp.com/HomepageForAdmin.php'</script>";
+        // header('Location:https://Olympic Best Spectaculor.000webhostapp.com/HeaderForUser.php');
+        // echo "<script>document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/HeaderForUser.php'</script>";
+        // echo "<script>document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/HomepageForAdmin.php'</script>";
         echo "<script>document.location = 'HomepageForAdmin.php'</script>";
         exit();
     } else {
@@ -31,12 +31,12 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OlympicsQuiz</title>
+    <title>Olympic Best Spectaculor</title>
 </head>
 
 <body>
     <div class="container my-5 py-5">
-        <div class="border border-dark p-5">
+        <div class="border border-dark border-1 rounded p-5">
             <h1 class="text-center"><i class="bi bi-person-bounding-box">&nbsp;&nbsp;Admin Login</i></h1>
             <form method="post">
                 <div class="form-group my-3">
@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="password" placeholder="Password"
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password"
                             aria-describedby="passwordToggle" name="password" autocomplete="off" required max="20">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button" id="passwordToggle"
@@ -63,8 +63,8 @@ if (isset($_POST['submit'])) {
 
 
 
-                <input type="submit" class="btn btn-success my-4" style="display:block; margin:auto" name="submit"
-                    value="Login">
+                <input type="submit" class="btn btn-success my-5 py-2 w-100 rounded"
+                    style="display:block; margin:auto; font-size: 18px;" name="submit" value="Login" />
             </form>
         </div>
     </div>

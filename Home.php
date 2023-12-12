@@ -1,10 +1,12 @@
 <?php
+session_start();
+$save = $_SESSION['ulogin'];
 
 include('Config.php');
 
 include('HeaderForUser.php');
-$save = $_SESSION['ulogin'];
-// echo $save;
+// $save = $_SESSION['ulogin'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +14,32 @@ $save = $_SESSION['ulogin'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OlympicsQuiz</title>
+    <title>Olympic Best Spectaculor</title>
+    <style>
+        /* Customize the color of the Next and Previous button icons */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            /* background-color: #000; */
+            color: #000;
+            /* Set the background color to black */
+        }
+
+        /* Customize the hover effect for the Next and Previous buttons */
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            color: #000;
+            /* Set the text color to black on hover */
+            /* background-color: #fff; */
+            overflow: hidden;
+            /* Set the background color to white on hover */
+        }
+    </style>
 </head>
 
 <body>
-    <h1 class="text-center my-5">WELCOME TO OlympicsQuiz</h1>
+    <h1 class="text-center my-5">WELCOME
+        <?php echo $save; ?> TO Olympic Best Spectaculor
+    </h1>
     <div class="container d-flex justify-content-center align-items-center">
 
 
@@ -73,7 +96,7 @@ $save = $_SESSION['ulogin'];
                             class="d-block mx-auto my-auto img-fluid" alt="No images to show">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon text-dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
@@ -82,12 +105,27 @@ $save = $_SESSION['ulogin'];
                     data-bs-slide="next">
                     <span class="carousel-control-next-icon text-dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
-                </button>
+                </button> -->
             </div>
 
         </div>
+        <!-- <button type="button" class="btn btn-outline-warning">Warning</button> -->
     </div>
+    <div class="text-center my-5">
+        <h4 class="text-center"><strong>Want to attempt quiz ?<br /> Click on below
+                button</strong></h4>
+        <div class="container">
+            <button type="button text-center" class="btn btn-outline-primary my-3 w-50 p-2" onclick="quiz()">Quiz</button>
+        </div>
+    </div>
+    <script>
+        function quiz() {
+
+            document.location = 'Quiz.php';
+        }
+    </script>
 
 </body>
+
 
 </html>

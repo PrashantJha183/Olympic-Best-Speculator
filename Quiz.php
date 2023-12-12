@@ -17,7 +17,9 @@ if (isset($_POST['submit'])) {
             $selectedOption = mysqli_real_escape_string($conn, $value);
 
             // Get the current date and time
-            $currentTime = date("Y-m-d H:i:s");
+            date_default_timezone_set('Asia/Mumbai');
+            $currentDateTime = date("Y-m-d H:i:s");
+
 
             // Insert the selected option into the database
             $query = "INSERT INTO `contestant`(`Username`, `QueId`, `Selectedopt`,  `Date and time`) VALUES ('$save', '$questionId', '$selectedOption', '$currentTime')";
@@ -43,12 +45,6 @@ if (isset($_POST['submit'])) {
 }
 
 
-
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -57,38 +53,51 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OlympicsQuiz</title>
+    <title>Olympic Best Spectaculor</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container my-5 py-3">
         <form method="post">
-            <h1 class="text-center">Quiz</h1>
+            <h1 class="text-center my-2">Quiz</h1>
 
             <?php
             // Fetch questions that haven't been submitted by the user and have non-empty options
-            $sql = "SELECT * FROM `question` WHERE `flag` != 1 AND `Id` NOT IN (SELECT `QueId` FROM `contestant` WHERE `Username` = '$save')";
+            date_default_timezone_set('Asia/Kolkata');
+            $currentDateTime = date("Y-m-d H:i:s");
+
+            // echo $currentDateTime;
+            $sql = "SELECT * FROM `question` WHERE `flag` != 1 AND `Id` NOT IN (SELECT `QueId` FROM `contestant` WHERE `Username` = '$save') AND `EndTime` > '$currentDateTime'";
 
             $result = mysqli_query($conn, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='text-center'>";
+                    // Check if the end time has passed
+                    $endTime = strtotime($row['EndTime']);
+                    if ($endTime <= time()) {
+                        echo "<div class='text-center'>Question {$row['Id']} has passed its end time. You can't attempt it anymore.</div>";
+                        continue; // Skip to the next iteration
+                    }
+
                     echo $row['Id'] . "." . " " . $row['Query'] . "<br>";
-                    echo "</div>";
 
                     // Display radio buttons for non-empty options
                     for ($i = 1; $i <= 12; $i++) {
                         $optionColumnName = "option" . $i;
                         $optionValue = $row[$optionColumnName];
+                        ?>
 
-                        if (!empty($optionValue)) {
-                            echo "<input type='hidden' name='question_{$row['Id']}_endtime' value='{$row['EndTime']}''>";
-                            echo "<input type='radio' name='selectedopt" . $row['Id'] . "' value='$optionValue'> $optionValue<br>";
-                        }
+                        <div class="my-2">
+                            <?php
+                            if (!empty($optionValue)) {
+                                echo "<input type='hidden' name='question_{$row['Id']}_endtime' value='{$row['EndTime']}''>";
+                                echo "<input type='radio' name='selectedopt" . $row['Id'] . "' value='$optionValue'> $optionValue<br>";
+                            }
                     }
-
-
+                    ?>
+                    </div>
+                    <?php
 
                     echo "<hr>";
                 }
@@ -97,6 +106,7 @@ if (isset($_POST['submit'])) {
                 echo "<script>document.location = 'LeaderboardForUser.php';</script>";
             }
             ?>
+
 
             <input type="submit" class="btn btn-success my-3" style="display:block; margin:auto" name="submit">
         </form>

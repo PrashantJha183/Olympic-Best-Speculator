@@ -1,6 +1,6 @@
 <?php
 include('Config.php');
-include('HeaderForAdmin.php');
+include('HeaderForQuiz.php');
 $Success = false;
 if (isset($_POST['submit'])) {
     $questionNo = $_POST['questionNo'];
@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
         -moz-appearance: textfield;
     }
 </style>
-<title>OlympicsQuiz</title>
+<title>Olympic Best Spectaculor</title>
 
 <body>
     <form method="post" action="AdminAddQuestion.php">

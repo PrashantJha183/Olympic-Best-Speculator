@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include('Config.php');
 
-// $insertSuccess = false;
+$insertSuccess = false;
 
 if (isset($_POST['submit'])) {
     $questionNo = $_POST['questionNo'];
@@ -121,7 +121,7 @@ if (isset($_POST['delete'])) {
             $deleteQuery = "DELETE FROM `question` WHERE `Id` = '$questionNoToDelete'";
             $deleteResult = mysqli_query($conn, $deleteQuery);
 
-        
+
 
             if (!$deleteResult) {
                 echo "<script>alert('Error deleting question: " . mysqli_error($conn) . "');</script>";
@@ -136,6 +136,41 @@ if (isset($_POST['delete'])) {
     }
 }
 // }
+
+
+
+if (isset($_POST['deleteAnswer'])) {
+    $questionNoToDeleteAnswer = $_POST['questionNoForDeleteAnswer'];
+ 
+    // var_dump($_POST);
+
+
+    // Check if the question number exists in the answer table and is answered by the admin
+    $query = "SELECT * FROM `answer` WHERE `QueId` = '$questionNoToDeleteAnswer'";
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        echo "<script>alert('Error in checking answer for question number');</script>";
+    } else {
+        $rows = mysqli_num_rows($result);
+
+        if ($rows > 0) {
+            // Question number exists and is answered by the admin, proceed with deletion
+            $deleteQuery = "DELETE FROM `answer` WHERE `QueId` = '$questionNoToDeleteAnswer'";
+            $deleteResult = mysqli_query($conn, $deleteQuery);
+
+            if (!$deleteResult) {
+                echo "<script>alert('Error deleting answer: " . mysqli_error($conn) . "');</script>";
+            } else {
+                echo "<script>alert('Answer deleted successfully');</script>";
+                echo "<script>document.location = 'HomepageForAdmin.php';</script>";
+            }
+        } else {
+            echo "<script>alert('Question number does not exist or is not answered by the admin');</script>";
+        }
+    }
+}
+
 
 ?>
 
@@ -176,14 +211,14 @@ if (isset($_POST['delete'])) {
             -moz-appearance: textfield;
         }
     </style>
-    <title>OlympicsQuiz</title>
+    <title>Olympic Best Spectaculor</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="HomepageForAdmin.php">OlympicsQuiz</a>
+            <a class="navbar-brand" href="HomepageForAdmin.php">Olympic Best Spectaculor</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -398,7 +433,7 @@ if (isset($_POST['delete'])) {
                                                 <div class="mb-3 my-5">
                                                     <label for="questionNo" class="form-label">Question no</label>
                                                     <input type="number" class="form-control" id="questionNo"
-                                                        placeholder="Enter question no to be Deleted" name="questionNo"
+                                                        placeholder="Enter question no to be deleted" name="questionNo"
                                                         autocomplete="off">
                                                 </div>
                                             </div>
@@ -413,6 +448,65 @@ if (isset($_POST['delete'])) {
                                 </form>
                             </div>
                         </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="RegisteredUser.php"><i
+                                class="bi bi-person-circle">&nbsp; Registered user</i></a>
+                    </li>
+
+
+
+
+
+
+
+
+
+
+                    <li class="nav-item">
+                        <a href="" class="nav-link active" aria-current="page" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalLong3">
+                            <i class="bi bi-trash-fill">&nbsp;Delete answer</i>
+                        </a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalLong3" tabindex="-1"
+                            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <form method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Delete your answer</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+
+                                        <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                                            <!-- Add your scrolling content here -->
+
+                                            <div class="container">
+                                                <div class="mb-3 my-5">
+                                                    <label for="questionNo" class="form-label">Question no</label>
+                                                    <input type="number" class="form-control" id="questionNo"
+                                                        placeholder="Enter question no whose answer should be deleted"
+                                                        name="questionNoForDeleteAnswer" autocomplete="off">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <input type="hidden" name="action" value="delete">
+                                            <input type="submit" class="btn btn-danger" value="Delete"
+                                                name="deleteAnswer">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
                     </li>
 
 
@@ -430,7 +524,7 @@ if (isset($_POST['delete'])) {
 
     function redirect() {
 
-        // document.location = 'https://OlympicsQuiz.000webhostapp.com/index.php';
+        // document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/index.php';
         document.location = '../index.php';
     }
 </script>
