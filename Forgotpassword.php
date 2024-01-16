@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
             if ($updateResult) {
                 echo "<script>alert('Password updated successfully.')</script>";
                 // Redirect to login page after updating password
-                echo "<script>document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/index.php'</script>";
+                echo "<script>document.location = 'https://Olympic Best Speculator.000webhostapp.com/index.php'</script>";
                 exit();
             } else {
                 echo "<script>alert('Failed to update password.')</script>";
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olympic Best Spectaculor</title>
+    <title>Olympic Best Speculator</title>
 </head>
 
 <body>

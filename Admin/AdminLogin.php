@@ -10,9 +10,9 @@ if (isset($_POST['submit'])) {
     if ($result && mysqli_num_rows($result) > 0) {
         $_SESSION['ulogin'] = $adminUname;
         // Redirect to another page after successful login
-        // header('Location:https://Olympic Best Spectaculor.000webhostapp.com/HeaderForUser.php');
-        // echo "<script>document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/HeaderForUser.php'</script>";
-        // echo "<script>document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/HomepageForAdmin.php'</script>";
+        // header('Location:https://Olympic Best Speculator.000webhostapp.com/HeaderForUser.php');
+        // echo "<script>document.location = 'https://Olympic Best Speculator.000webhostapp.com/HeaderForUser.php'</script>";
+        // echo "<script>document.location = 'https://Olympic Best Speculator.000webhostapp.com/HomepageForAdmin.php'</script>";
         echo "<script>document.location = 'HomepageForAdmin.php'</script>";
         exit();
     } else {
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olympic Best Spectaculor</title>
+    <title>Olympic Best Speculator</title>
 </head>
 
 <body>

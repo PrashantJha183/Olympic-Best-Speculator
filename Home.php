@@ -14,32 +14,35 @@ include('HeaderForUser.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olympic Best Spectaculor</title>
+    <title>Olympic Best Speculator</title>
     <style>
-        /* Customize the color of the Next and Previous button icons */
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-            /* background-color: #000; */
             color: #000;
-            /* Set the background color to black */
+
         }
 
-        /* Customize the hover effect for the Next and Previous buttons */
+
         .carousel-control-prev:hover,
         .carousel-control-next:hover {
             color: #000;
-            /* Set the text color to black on hover */
-            /* background-color: #fff; */
+
             overflow: hidden;
-            /* Set the background color to white on hover */
+
         }
     </style>
 </head>
 
 <body>
+    <!-- <div class="container"> -->
     <h1 class="text-center my-5">WELCOME
-        <?php echo $save; ?> TO Olympic Best Spectaculor
+        <?php if ($save) {
+            echo $save;
+        } else {
+            "";
+        } ?> TO Olympic Best Speculator
     </h1>
+    <!-- </div> -->
     <div class="container d-flex justify-content-center align-items-center">
 
 
@@ -111,11 +114,12 @@ include('HeaderForUser.php');
         </div>
         <!-- <button type="button" class="btn btn-outline-warning">Warning</button> -->
     </div>
-    <div class="text-center my-5">
+    <div class="text-center my-3">
         <h4 class="text-center"><strong>Want to attempt quiz ?<br /> Click on below
                 button</strong></h4>
         <div class="container">
-            <button type="button text-center" class="btn btn-outline-primary my-3 w-50 p-2" onclick="quiz()">Quiz</button>
+            <button type="button text-center" class="btn btn-outline-primary my-3 w-50 p-2"
+                onclick="quiz()">Quiz</button>
         </div>
     </div>
     <script>

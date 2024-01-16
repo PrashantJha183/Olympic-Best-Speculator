@@ -40,14 +40,14 @@ if ($queryResult) {
     <?php
     // $selectLeaderboardQuery = "SELECT `Username` FROM `leaderboard`;";
     // $selectLeaderboardResult = mysqli_query($conn, $selectLeaderboardQuery);
-
+    
     // if ($selectLeaderboardResult) {
     //     while ($row = mysqli_fetch_assoc($selectLeaderboardResult)) {
     //         $username = $row['Username'];
     //         echo "<script>alert('Username: $username');</script>";
     //     }
     // }
-
+    
     ?>
     <div class="container my-5 text-center">
         <div class="row my-4">
@@ -89,8 +89,21 @@ if ($queryResult) {
 
         </div>
 
-
+        <div class="text-center my-3">
+            <h4 class="text-center"><strong>Want to attempt quiz ?<br /> Click on below
+                    button</strong></h4>
+            <div class="container">
+                <button type="button text-center" class="btn btn-outline-primary my-3 w-50 p-2"
+                    onclick="quiz()">Quiz</button>
+            </div>
+        </div>
     </div>
+    <script>
+        function quiz() {
+
+            document.location = 'Admin.php';
+        }
+    </script>
 
 </body>
 

@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         $execute = mysqli_query($conn, $insertQuery);
 
 
-        echo $execute;
+        // echo $execute;
 
 
         $Success = true;
@@ -70,12 +70,12 @@ if (isset($_POST['submit'])) {
         margin: 0;
     }
 
-    /* Firefox */
+
     input[type=number] {
         -moz-appearance: textfield;
     }
 </style>
-<title>Olympic Best Spectaculor</title>
+<title>Olympic Best Speculator</title>
 
 <body>
     <form method="post" action="AdminAddQuestion.php">

@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['ulogin'] = $uname;
         // Redirect to another page after successful login
         echo "<script>document.location = 'Home.php'</script>";
-        // echo "<script>document.location = 'https://Olympic Best Spectaculor.000webhostapp.com/Home.php'</script>";
+        // echo "<script>document.location = 'https://Olympic Best Speculator.000webhostapp.com/Home.php'</script>";
         exit();
     } else {
         echo "<script>alert('Invalid login credentials')</script>";
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olympic Best Spectaculor</title>
+    <title>Olympic Best Speculator</title>
 </head>
 
 <body>

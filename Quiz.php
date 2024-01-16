@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
             $selectedOption = mysqli_real_escape_string($conn, $value);
 
             // Get the current date and time
-            date_default_timezone_set('Asia/Mumbai');
+            // date_default_timezone_set('Asia/Mumbai');
             $currentDateTime = date("Y-m-d H:i:s");
 
 
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olympic Best Spectaculor</title>
+    <title>Olympic Best Speculator</title>
 </head>
 
 <body>
@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 
             <?php
             // Fetch questions that haven't been submitted by the user and have non-empty options
-            date_default_timezone_set('Asia/Kolkata');
+            // date_default_timezone_set('Asia/Kolkata');
             $currentDateTime = date("Y-m-d H:i:s");
 
             // echo $currentDateTime;

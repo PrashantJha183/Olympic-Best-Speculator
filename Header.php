@@ -22,7 +22,7 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
 
-    <title>Olympic Best Spectaculor</title>
+    <title>Olympic Best Speculator</title>
     <style>
         #mode {
             cursor: pointer;
@@ -78,7 +78,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="index.php">Olympic Best Spectaculor</a>
+            <a class="navbar-brand" href="index.php">Olympic Best Speculator</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

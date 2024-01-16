@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 10, 2023 at 10:08 AM
+-- Generation Time: Dec 20, 2023 at 06:08 PM
 -- Server version: 10.5.20-MariaDB
 -- PHP Version: 7.3.33
 
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`Id`, `Username`, `Password`) VALUES
-(1, 'Mogu', 'Mogu');
+(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,34 @@ INSERT INTO `contestant` (`Id`, `Username`, `QueId`, `Selectedopt`, `flag`, `Dat
 (249, 'Shahsaj27', 6, 'Prerna Parivaar', 1, '2023-12-10 09:20:14'),
 (250, 'Shahsaj27', 7, 'Better Together', 1, '2023-12-10 09:20:14'),
 (251, 'Shahsaj27', 8, 'Prerna Parivaar', 1, '2023-12-10 09:20:14'),
-(252, 'Shahsaj27', 9, 'Better Together', 1, '2023-12-10 09:20:14');
+(252, 'Shahsaj27', 9, 'Better Together', 1, '2023-12-10 09:20:14'),
+(253, 'Hina.cares', 1, 'S.K.Riders', 1, '2023-12-10 18:50:25'),
+(254, 'Hina.cares', 2, 'S.K. Riders', 1, '2023-12-10 18:50:25'),
+(255, 'Hina.cares', 3, 'S.k. Riders', 1, '2023-12-10 18:50:25'),
+(256, 'Hina.cares', 4, 'S.K. Riders', 1, '2023-12-10 18:50:25'),
+(257, 'Hina.cares', 5, 'Gandhi Spartans', 1, '2023-12-10 18:50:25'),
+(258, 'Hina.cares', 6, 'S.K. Riders', 1, '2023-12-10 18:50:25'),
+(259, 'Hina.cares', 7, 'S.K. Riders', 1, '2023-12-10 18:50:25'),
+(260, 'Hina.cares', 8, 'Fiona Royals', 1, '2023-12-10 18:50:25'),
+(261, 'Hina.cares', 9, 'Gandhi Spartans', 1, '2023-12-10 18:50:25'),
+(262, 'Parva ', 1, 'V Family', 1, '2023-12-12 17:02:59'),
+(263, 'Parva ', 2, 'Swara Strikers', 1, '2023-12-12 17:02:59'),
+(264, 'Parva ', 3, 'Star Eleven', 1, '2023-12-12 17:02:59'),
+(265, 'Parva ', 4, 'Star Eleven', 1, '2023-12-12 17:02:59'),
+(266, 'Parva ', 5, 'Star Eleven', 1, '2023-12-12 17:02:59'),
+(267, 'Parva ', 6, 'Better Together ', 1, '2023-12-12 17:02:59'),
+(268, 'Parva ', 7, 'D.A.R.K Knight Riders', 1, '2023-12-12 17:02:59'),
+(269, 'Parva ', 8, 'D.A.R.K Knight Riders', 1, '2023-12-12 17:02:59'),
+(270, 'Parva ', 9, 'Star Eleven', 1, '2023-12-12 17:02:59'),
+(271, 'Msr0507', 1, 'Better Together', 1, '2023-12-16 09:30:01'),
+(272, 'Msr0507', 2, 'Prerna Parivaar', 1, '2023-12-16 09:30:01'),
+(273, 'Msr0507', 3, 'Prerna Parivaar', 1, '2023-12-16 09:30:01'),
+(274, 'Msr0507', 4, 'Prerna Parivaar', 1, '2023-12-16 09:30:01'),
+(275, 'Msr0507', 5, 'Prerna Parivaar', 1, '2023-12-16 09:30:01'),
+(276, 'Msr0507', 6, 'Prerna Parivaar', 1, '2023-12-16 09:30:01'),
+(277, 'Msr0507', 7, 'Prerna Parivaar', 1, '2023-12-16 09:30:01'),
+(278, 'Msr0507', 8, 'Prerna Parivaar', 1, '2023-12-16 09:30:01'),
+(279, 'Msr0507', 9, 'Better Together', 1, '2023-12-16 09:30:01');
 
 -- --------------------------------------------------------
 
@@ -212,12 +239,12 @@ INSERT INTO `question` (`Id`, `Query`, `option1`, `option2`, `option3`, `option4
 (1, 'Which team will win overarm cricket tournament?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K.Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 1, '2023-12-17 08:00:00'),
 (2, 'Which team will be runner up in overarm tournament?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 1, '2023-12-17 08:00:00'),
 (3, 'Which team will have man of the series?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.k. Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 1, '2023-12-17 08:00:00'),
-(4, 'Which team will hit maximum 6s in the overarm tournament?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 1, '2023-12-17 08:00:00'),
-(5, 'Which team will hit maximum 4s in the overarm tournament?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta  Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family',  0, 1, '2023-12-17 08:00:00'),
-(6, 'Which team will lead on the first day of the overarm cricket tournament?', 'Better Together ', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family',  0, 1, '2023-12-17 08:00:00'),
-(7, 'Which team player will score first 50?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family',  0, 1, '2023-12-17 08:00:00'),
-(8, 'Which team will have the leading run scorer?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family',  0, 1, '2023-12-17 08:00:00'),
-(9, 'Which team will have the leading wicket-taker?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family',  0, 1, '2023-12-17 08:00:00');
+(4, 'Which team will hit maximum 6s in the overarm tournament?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 0, '2023-12-17 08:00:00'),
+(5, 'Which team will hit maximum 4s in the overarm tournament?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta  Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 0, '2023-12-17 08:00:00'),
+(6, 'Which team will lead on the first day of the overarm cricket tournament?', 'Better Together ', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 1, '2023-12-17 08:00:00'),
+(7, 'Which team player will score first 50?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 1, '2023-12-17 08:00:00'),
+(8, 'Which team will have the leading run scorer?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 0, '2023-12-17 08:00:00'),
+(9, 'Which team will have the leading wicket-taker?', 'Better Together', 'D.A.R.K Knight Riders', 'Fiona Royals', 'Gandhi Spartans', 'HD Blasters', 'Prerna Parivaar', 'Sacheta Royals', 'SDC Warriors', 'S.K. Riders', 'Star Eleven', 'Swara Strikers', 'V Family', 0, 0, '2023-12-17 08:00:00');
 
 -- --------------------------------------------------------
 
@@ -258,7 +285,12 @@ INSERT INTO `user` (`Id`, `Name`, `Username`, `Password`, `Security`) VALUES
 (42, 'PIYUSH I GANDHI ', 'PIYUSH GANDHI', 'caeb7bf55c1bb2482a207f919158ee26', 'PG'),
 (43, 'Nisha ', 'Nisha shah', '4db860e489c3c922f72b9f26d909af6e', '9999'),
 (44, 'Bhagya Shah', 'Bhagya123', 'd22c37d848ee149a65f7ba0c5c0fc228', '1234'),
-(45, 'Saj Shah', 'Shahsaj27', 'a7ab993257b0c0763aa4a2dc85110e44', '270899');
+(45, 'Saj Shah', 'Shahsaj27', 'a7ab993257b0c0763aa4a2dc85110e44', '270899'),
+(46, 'Hina', 'Hina.cares', '781e1b3721598807b2d03f93cc580161', 'santu'),
+(47, 'Rehang', 'rfadia', 'e10adc3949ba59abbe56e057f20f883e', '123456'),
+(48, 'rehang', 'rehangfadia', 'e10adc3949ba59abbe56e057f20f883e', '123456'),
+(49, 'Parva ', 'Parva ', 'cf3f69a9ed2426e6867edf69dd72c909', 'parva '),
+(50, 'Mihir shah ', 'Msr0507', '98aae9b380a8b4c0ba70507458757956', '0507');
 
 --
 -- Indexes for dumped tables
@@ -310,7 +342,7 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT for table `contestant`
 --
 ALTER TABLE `contestant`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
 
 --
 -- AUTO_INCREMENT for table `leaderboard`
@@ -328,7 +360,7 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `Id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
